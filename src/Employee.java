@@ -75,4 +75,8 @@ public class Employee {
                 " Зарплата:" + salary + ".";
     }
 
+    public String fullDataDepartment() {
+        return "Сотрудник: " + name + " " + surname + " " + lastName +
+                " Зарплата:" + salary + ".";
+    }
 }
