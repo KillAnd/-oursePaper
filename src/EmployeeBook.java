@@ -75,40 +75,47 @@ public class EmployeeBook {
     }
 
     public void departmentCode(int departmentCode) {
-        int max = 0;
-        for (int i = 0; i < employee.length; i++) {
-            if (departmentCode == employee[i].getDepartment() && max < employee[i].getSalary()) {
-                max = employee[i].getSalary();
+        boolean questionDepartment = departmentCode < 6 && departmentCode > 0;
+        if (questionDepartment) {
+            int max = 0;
+            for (int i = 0; i < employee.length; i++) {
+                if (departmentCode == employee[i].getDepartment() && max < employee[i].getSalary()) {
+                    max = employee[i].getSalary();
+                }
             }
-        }
-        int min = max;
-        for (int i = 0; i < employee.length; i++) {
-            if (departmentCode == employee[i].getDepartment() && employee[i].getSalary() < min) {
-                min = employee[i].getSalary();
+            int min = max;
+            for (int i = 0; i < employee.length; i++) {
+                if (departmentCode == employee[i].getDepartment() && employee[i].getSalary() < min) {
+                    min = employee[i].getSalary();
+                }
             }
-        }
-        System.out.println("Максимальная зарплата сотрудника из " + departmentCode + " отдела составляет " + max
-                + '\n' + "Минимальнада я зарплата сотрудника из " + departmentCode + " отдела составляет " + min);
-        int sum = 0;
-        for (int i = 0; i < employee.length; i++) {
-            if (departmentCode == employee[i].getDepartment()) {
-                sum += employee[i].getSalary();
+            System.out.println("Максимальная зарплата сотрудника из " + departmentCode + " отдела составляет " + max
+                    + '\n' + "Минимальнада я зарплата сотрудника из " + departmentCode + " отдела составляет " + min);
+            printSeparator();
+            int sum = 0;
+            for (int i = 0; i < employee.length; i++) {
+                if (departmentCode == employee[i].getDepartment()) {
+                    sum += employee[i].getSalary();
+                }
             }
-        }
-        System.out.println("Сумма затрат на зарплату " + departmentCode + " отдела " + sum);
-        float mediumSalary = 0;
-        for (int i = 0; i < employee.length; i++) {
-            if (departmentCode == employee[i].getDepartment()) {
-                mediumSalary++;
+            System.out.println("Сумма затрат на зарплату " + departmentCode + " отдела " + sum);
+            printSeparator();
+            float mediumSalary = 0;
+            for (int i = 0; i < employee.length; i++) {
+                if (departmentCode == employee[i].getDepartment()) {
+                    mediumSalary++;
+                }
             }
-        }
-        mediumSalary = sum / mediumSalary;
-        System.out.println(mediumSalary);
-
-        for (int i = 0; i < employee.length; i++) {
-            if (departmentCode == employee[i].getDepartment()) {
-                System.out.println("Отдел номер №" + departmentCode + " " + employee[i].fullDataDepartment());
+            mediumSalary = sum / mediumSalary;
+            System.out.println(mediumSalary);
+            printSeparator();
+            for (int i = 0; i < employee.length; i++) {
+                if (departmentCode == employee[i].getDepartment()) {
+                    System.out.println("Отдел номер №" + departmentCode + " " + employee[i].fullDataDepartment());
+                }
             }
+        } else {
+            System.out.println("нет такого отдела!");
         }
     }
 
@@ -131,12 +138,12 @@ public class EmployeeBook {
 
     }
 //методы 3 уровня курсовой работы
-    public void addEmployee() {
+    public void addEmployee(String name, String surname, String lastName, int department, int salary) {
         boolean addNew = false;
-        Employee addNewEmployee = new Employee("Иванов", "Иван", "Иванович", 3, 80000);
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] == null) {
                 addNew=true;
+                Employee addNewEmployee = new Employee(name,surname,lastName,department,salary);
                 employee[i] = addNewEmployee;
             }
         }
