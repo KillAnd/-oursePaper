@@ -88,7 +88,7 @@ public class EmployeeBook {
             }
         }
         System.out.println("Максимальная зарплата сотрудника из " + departmentCode + " отдела составляет " + max
-                + '\n' + "Минимальная зарплата сотрудника из " + departmentCode + " отдела составляет " + min);
+                + '\n' + "Минимальнада я зарплата сотрудника из " + departmentCode + " отдела составляет " + min);
         int sum = 0;
         for (int i = 0; i < employee.length; i++) {
             if (departmentCode == employee[i].getDepartment()) {
@@ -133,9 +133,11 @@ public class EmployeeBook {
 //методы 3 уровня курсовой работы
     public void addEmployee() {
         boolean addNew = false;
+        Employee addNewEmployee = new Employee("Иванов", "Иван", "Иванович", 3, 80000);
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] == null) {
                 addNew=true;
+                employee[i] = addNewEmployee;
             }
         }
         System.out.println(addNew);
